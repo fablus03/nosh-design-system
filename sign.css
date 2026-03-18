@@ -1,0 +1,335 @@
+body {
+  font-family: "Helvetica", "Heisei Kaku Gothic Std", "平成角ゴシック Std", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
+}
+
+/* ==========================================================
+   1. 共通設定
+   ========================================================== */
+.paper-block {
+  display: block;
+  box-sizing: border-box;
+  width: var(--base-width);
+  height: var(--base-height);
+  --side: var(--short-side, 210mm);
+  padding: calc(var(--side) * 0.05);
+  font-size: calc(var(--base-height) * var(--font-ratio, 0.015));
+
+  /* --- 共通の余白定義 --- */
+  --space-l: calc(var(--side) * 0.03);  /* 大きな余白 */
+  --space-m: calc(var(--side) * 0.02);  /* 標準的な余白 */
+  --space-s: calc(var(--side) * 0.01);  /* 小さな余白 */
+}
+
+/* ==========================================================
+   2. 基本リセット & 共通クラス
+   ========================================================== */
+p { margin: 0; }
+.text-center { text-align: center; }
+
+/* 最後の要素のマージンを消してパディングとの重複を防ぐ */
+.paper-block *:last-child,
+.r-box *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* ==========================================================
+   3. 各サイズ定義
+   ========================================================== */
+#A4-tate { --base-width: 210mm; --base-height: 297mm; --short-side: 210mm; }
+#A4-yoko { --base-width: 297mm; --base-height: 210mm; --short-side: 210mm; }
+#A3-tate { --base-width: 297mm; --base-height: 420mm; --short-side: 297mm; }
+#A3-yoko { --base-width: 420mm; --base-height: 297mm; --short-side: 297mm; }
+
+/* ==========================================================
+   4. 背景色
+   ========================================================== */
+.white-back { background-color: #fff; color: #333; }
+.green-back { background-color: #63A351; color: #fff; }
+
+/* ==========================================================
+   5. フォント要素
+   ========================================================== */
+.title {
+  font-weight: 700;
+  font-size: 3.5em;
+  line-height: 1.4;
+  margin-bottom: var(--space-m);
+}
+
+.article {
+  font-size: 1.5em;
+  line-height: 1.6;
+  margin-bottom: var(--space-m);
+}
+
+/* ==========================================================
+   6. コンテンツボックス（R付き）
+   ========================================================== */
+.r-box {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: calc(var(--side) * 0.02);
+  padding: var(--space-l);
+  margin-bottom: var(--space-m);
+}
+
+.box-white {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.box-green {
+  background-color: #63A351;
+  color: #fff;
+}
+
+/* ==========================================================
+   7. 箇条書き（リスト）
+   ========================================================== */
+ul, ol {
+  padding-left: 0;
+  margin: 0 0 var(--space-m) 0;
+  list-style: none;
+}
+
+li {
+  position: relative;
+  font-size: 1.3em;
+  line-height: 1.6;
+  margin-bottom: var(--space-s);
+  padding-left: calc(var(--side) * 0.05);
+}
+
+/* 擬似要素で「1行目の中央に来る点」を作る
+   top = line-height(1.6)の半分 = 0.8em で1行目の中心 */
+li::before {
+  content: "";
+  position: absolute;
+  left: 0.5em;
+  top: calc(0.5em * 1.6); /* (font-size * line-height) / 2 */
+  transform: translateY(-50%);
+  width: calc(var(--side) * 0.015);
+  height: calc(var(--side) * 0.015);
+  background-color: #63A351;
+  border-radius: 50%;
+}
+
+/* 背景が緑の場所では点を白にする */
+.green-back li::before,
+.box-green li::before {
+  background-color: #fff;
+}
+
+/* 白ボックス内の点は緑にする */
+.box-white li::before {
+  background-color: #63A351;
+}
+
+/* ==========================================================
+   8. 写真ブロック
+   ========================================================== */
+.img-block {
+  width: 100%;
+  margin-bottom: var(--space-m);
+  overflow: hidden;
+  border-radius: calc(var(--side) * 0.01);
+}
+
+.img-block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ==========================================================
+   9. ピクトブロック
+   ========================================================== */
+.picto-block {
+  width: calc(var(--side) * 0.25);
+  height: calc(var(--side) * 0.25);
+  margin: 0 auto var(--space-m);
+  border: calc(var(--side) * 0.01) solid currentColor;
+  border-radius: calc(var(--side) * 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.picto-block svg {
+  width: 60%;
+  height: 60%;
+}
+
+.picto-block svg path {
+  fill: currentColor;
+}
+
+/* ==========================================================
+   10. グリッドレイアウト（写真・ピクト並べ用）
+   ========================================================== */
+.grid {
+  display: grid;
+  gap: var(--space-s);
+  margin-bottom: var(--space-m);
+}
+
+/* 列数の切り替え */
+.grid.col-2 { grid-template-columns: repeat(2, 1fr); }
+.grid.col-3 { grid-template-columns: repeat(3, 1fr); }
+.grid.col-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* グリッド内の写真は高さを揃える */
+.grid .img-block {
+  margin-bottom: 0;
+  aspect-ratio: 1 / 1;
+}
+
+/* グリッド内のピクトは親幅に追従 */
+.grid .picto-block {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  margin: 0;
+}
+
+/* グリッド+キャプション（マニュアル手順用） */
+.grid .step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+.grid .step .img-block,
+.grid .step .picto-block {
+  flex-shrink: 0;
+}
+
+.grid .step p {
+  font-size: 1.1em;
+  line-height: 1.4;
+}
+
+/* ==========================================================
+   11. 表（テーブル）
+   ========================================================== */
+.table_design {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: var(--space-m);
+}
+
+.table_design th,
+.table_design td {
+  padding: 0.8em 1em;
+  font-size: 1.3em;
+  line-height: 1.6;
+  vertical-align: top;
+}
+
+.table_design th {
+  color: #63A351;
+  font-weight: bold;
+  text-align: left;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* 見出しの右側に区切り線 */
+.table_design th::after {
+  content: "";
+  background-color: #D9D9D9;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 60%;
+}
+
+.table_design td {
+  color: currentColor;
+}
+
+/* 緑背景時：見出しを白 */
+.green-back .table_design th,
+.box-green .table_design th {
+  color: #fff !important;
+}
+
+/* 白ボックス内は常に緑（最後に書いて最優先） */
+.box-white .table_design th {
+  color: #63A351 !important;
+}
+
+.green-back .table_design th::after,
+.box-green .table_design th::after {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================
+   12. ロゴ配置
+   ========================================================== */
+
+
+:root {
+  --nosh-green: #70a254;
+  --nosh-white: #ffffff;
+  --logo-width: 120px; /* 基本サイズ */
+  --logo-bottom: 24px;
+  --logo-right: 24px;
+}
+
+/* paper-blockをposition基準にする */
+.paper-block {
+  position: relative;
+}
+
+/* ベースとなる配置クラス */
+.nosh-logo {
+  position: absolute;
+  bottom: calc(var(--side) * 0.05);
+  right: calc(var(--side) * 0.05);
+  width: calc(var(--side) * 0.15);
+  z-index: 9999;
+  transition: color 0.3s ease; /* 色の切り替えをスムーズに */
+}
+
+/* 内部のSVGパスをCSSで制御可能にする */
+.nosh-logo svg {
+  width: 100%;
+  height: auto;
+  display: none; /* 基本は全部消しておく */
+}
+
+/* --- 形状の切り替えロジック --- */
+.nosh-logo.type-side .svg-side { display: block; }
+.nosh-logo.type-under .svg-under { display: block; }
+.nosh-logo.type-none .svg-none { display: block; }
+
+/* --- 色（背景）の切り替えロジック --- */
+/* 白背景：ロゴを緑に */
+.nosh-logo.is-white-bg {
+  color: var(--nosh-green);
+}
+
+/* 緑背景：ロゴを白に */
+.nosh-logo.is-green-bg {
+  color: var(--nosh-white);
+}
+
+/* SVGの中のfillをcurrentColorに同期 */
+.nosh-logo svg path {
+  fill: currentColor;
+}
+
+/* ==========================================================
+   13. 印刷用
+   ========================================================== */
+@media print {
+  body { background: none !important; margin: 0 !important; padding: 0 !important; }
+  .paper-block { box-shadow: none !important; margin: 0 !important; }
+}

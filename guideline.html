@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ナッシュ サインデザインルール説明書</title>
+<style>
+  @page { size: A4; margin: 20mm 25mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', sans-serif; color: #1a1a1a; font-size: 10pt; line-height: 1.7; }
+
+  /* ページ区切り */
+  .page-break { page-break-before: always; }
+
+  /* 表紙 */
+  .cover { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 10mm; }
+  .cover-line { width: 40px; height: 2px; background: #1a1a1a; margin-bottom: 24px; }
+  .cover h1 { font-size: 28pt; font-weight: 700; letter-spacing: 0.05em; line-height: 1.3; margin-bottom: 8px; }
+  .cover .sub { font-size: 11pt; color: #888; margin-bottom: 48px; }
+  .cover .meta { font-size: 9pt; color: #999; line-height: 1.8; }
+
+  /* セクション */
+  h2 { font-size: 16pt; font-weight: 700; margin: 32pt 0 12pt; padding-bottom: 6pt; border-bottom: 1.5px solid #1a1a1a; letter-spacing: 0.03em; }
+  h3 { font-size: 11pt; font-weight: 700; margin: 18pt 0 6pt; color: #333; }
+  p { margin-bottom: 8pt; }
+
+  /* テーブル */
+  table { width: 100%; border-collapse: collapse; margin: 8pt 0 16pt; font-size: 9.5pt; }
+  th { background: #f5f5f5; font-weight: 600; text-align: left; padding: 6pt 10pt; border-bottom: 1.5px solid #ccc; }
+  td { padding: 6pt 10pt; border-bottom: 1px solid #e8e8e8; }
+  tr:last-child td { border-bottom: none; }
+
+  /* リスト */
+  ul { margin: 6pt 0 12pt 18pt; }
+  li { margin-bottom: 3pt; }
+
+  /* 番号リスト */
+  ol { margin: 6pt 0 12pt 18pt; }
+  ol li { margin-bottom: 4pt; }
+  ol ol { margin: 3pt 0 3pt 18pt; }
+
+  /* カラースウォッチ */
+  .swatch { display: inline-block; width: 14px; height: 14px; border-radius: 2px; vertical-align: middle; margin-right: 6px; border: 1px solid #ddd; }
+
+  /* 注記 */
+  .note { font-size: 9pt; color: #888; margin: 6pt 0 12pt; }
+
+  /* 承認欄 */
+  .approval { margin-top: 32pt; }
+  .approval td:first-child { width: 80pt; font-weight: 600; color: #555; }
+  .approval td:last-child { min-width: 200pt; border-bottom: 1px solid #ccc; }
+
+  /* 印刷 */
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cover { height: auto; min-height: 100vh; }
+  }
+  @media screen {
+    body { max-width: 210mm; margin: 0 auto; padding: 20mm 25mm; background: #fff; box-shadow: 0 0 20px rgba(0,0,0,0.08); }
+  }
+</style>
+</head>
+<body>
+
+<!-- 表紙 -->
+<div class="cover">
+  <div class="cover-line"></div>
+  <h1>サインデザイン<br>ルール説明書</h1>
+  <p class="sub">nosh Sign Design Guideline</p>
+  <div class="meta">
+    作成：ファブラス株式会社<br>
+    対象：ナッシュ株式会社 全拠点<br>
+    作成日：2026年3月18日<br>
+    版：v1.0
+  </div>
+</div>
+
+<!-- 1. フォント -->
+<div class="page-break"></div>
+<h2>1. フォント</h2>
+<p>全サインで以下のフォントを使用します。</p>
+<table>
+  <tr><th>用途</th><th>フォント名</th><th>備考</th></tr>
+  <tr><td>欧文（英数字）</td><td>Helvetica 75 Bold</td><td>全サイン共通</td></tr>
+  <tr><td>和文（日本語）</td><td>DF平成ゴシック体NW7J2</td><td>全サイン共通</td></tr>
+</table>
+
+<!-- 2. カラーパレット -->
+<h2>2. カラーパレット</h2>
+<p>サインで使用する色は以下に限定します。</p>
+<table>
+  <tr><th>色名</th><th>カラーコード</th><th>用途</th></tr>
+  <tr><td><span class="swatch" style="background:#000"></span>ブラック</td><td>#000000（K100）</td><td>本文テキスト</td></tr>
+  <tr><td><span class="swatch" style="background:#fff"></span>ホワイト</td><td>#FFFFFF</td><td>背景・反転テキスト</td></tr>
+  <tr><td><span class="swatch" style="background:#D9D9D9"></span>グレー</td><td>#D9D9D9（K15）</td><td>補助・枠線</td></tr>
+  <tr><td><span class="swatch" style="background:#63A351"></span>noshグリーン</td><td>#63A351</td><td>背景・アクセント・ブレットポイント</td></tr>
+</table>
+
+<h3>機能色（限定使用）</h3>
+<p>注意書きサインなど特定の用途に限り使用可能。通常サインでは使用しません。</p>
+<table>
+  <tr><th>色名</th><th>カラーコード</th><th>用途</th></tr>
+  <tr><td><span class="swatch" style="background:#CC0000"></span>警告レッド</td><td>#CC0000</td><td>禁止・危険・緊急停止</td></tr>
+  <tr><td><span class="swatch" style="background:#F5A623"></span>注意イエロー</td><td>#F5A623</td><td>注意喚起・警告表示</td></tr>
+</table>
+<p class="note">※ 使用時は必ずファブラスに確認の上、承認を得てください。</p>
+
+<h3>背景パターン</h3>
+<ul>
+  <li><strong>白背景</strong>：テキスト黒、アクセント緑</li>
+  <li><strong>緑背景</strong>：テキスト白、アクセント白</li>
+</ul>
+
+<!-- 3. ロゴ配置 -->
+<h2>3. ロゴ配置</h2>
+<p>全サインの右下にnoshロゴを配置します。</p>
+<table>
+  <tr><th>パターン</th><th>説明</th></tr>
+  <tr><td>マークのみ</td><td>noshロゴマーク単体</td></tr>
+  <tr><td>横並び</td><td>ロゴマーク＋社名横配置</td></tr>
+  <tr><td>縦並び</td><td>ロゴマーク＋社名縦配置</td></tr>
+</table>
+<ul>
+  <li>白背景時：ロゴは緑で表示</li>
+  <li>緑背景時：ロゴは白で表示</li>
+</ul>
+
+<!-- 4. レイアウトパターン -->
+<div class="page-break"></div>
+<h2>4. レイアウトパターン</h2>
+<p>サインの内容に応じて、以下のレイアウトパターンを使用します。</p>
+
+<h3>パターンA：テキストのみ</h3>
+<p>タイトル＋説明文の構成。注意喚起・禁止事項・手順説明に使用。</p>
+
+<h3>パターンB：ピクト＋テキスト</h3>
+<p>ピクトグラム（アイコン）＋タイトル＋説明文。室名表示・誘導サインに使用。</p>
+
+<h3>パターンC：写真＋テキスト</h3>
+<p>写真（手順写真など）＋説明文。マニュアル系サインに使用。</p>
+
+<h3>パターンD：箇条書き</h3>
+<p>タイトル＋箇条書きリスト。ルール一覧・注意事項リストに使用。</p>
+
+<h3>パターンE：複合レイアウト</h3>
+<p>上記を組み合わせた構成。横2列・3列の配置も可能。</p>
+
+<!-- 5. デザイン詳細ルール -->
+<div class="page-break"></div>
+<h2>5. デザイン詳細ルール</h2>
+<p>デザイナーごとのブレを防ぐための具体的な数値指定です。</p>
+
+<h3>角丸（R）</h3>
+<table>
+  <tr><th>対象</th><th>角丸値</th><th>計算方法</th></tr>
+  <tr><td>サイン外枠</td><td>なし</td><td>-</td></tr>
+  <tr><td>コンテンツ枠（r-box）</td><td>短辺の2%</td><td>A4横(短辺210mm)→4.2mm</td></tr>
+  <tr><td>ピクトグラム枠</td><td>短辺の2%</td><td>r-boxと同じ比率</td></tr>
+  <tr><td>写真ブロック</td><td>短辺の1%</td><td>A4横→2.1mm</td></tr>
+</table>
+
+<h3>フォントウェイト</h3>
+<table>
+  <tr><th>要素</th><th>ウェイト</th><th>備考</th></tr>
+  <tr><td>タイトル</td><td>Bold（700）</td><td>デフォルト。内容によりNormalに変更可</td></tr>
+  <tr><td>本文・説明文</td><td>Normal（400）</td><td>デフォルト。強調時のみBold</td></tr>
+  <tr><td>箇条書き</td><td>Normal（400）</td><td>-</td></tr>
+</table>
+
+<h3>余白（マージン・パディング）</h3>
+<table>
+  <tr><th>対象</th><th>値</th><th>計算方法</th></tr>
+  <tr><td>サイン外側余白</td><td>短辺の5%</td><td>A4横→10.5mm</td></tr>
+  <tr><td>要素間マージン（大）</td><td>短辺の3%</td><td>A4横→6.3mm</td></tr>
+  <tr><td>要素間マージン（標準）</td><td>短辺の2%</td><td>A4横→4.2mm</td></tr>
+  <tr><td>要素間マージン（小）</td><td>短辺の1%</td><td>A4横→2.1mm</td></tr>
+  <tr><td>r-box内パディング</td><td>短辺の3%</td><td>大マージンと同値</td></tr>
+</table>
+
+<h3>ピクトグラム枠</h3>
+<ul>
+  <li>枠線：短辺の1%の太さ、色は本文色と同じ（白背景→黒、緑背景→白）</li>
+  <li>枠内アイコン：枠サイズの60%</li>
+  <li>配置：中央揃え</li>
+</ul>
+
+<h3>表（テーブル）</h3>
+<ul>
+  <li>見出し色：noshグリーン（白背景時）/ 白（緑背景時）</li>
+  <li>見出し太字：Bold</li>
+  <li>区切り線：グレー（#D9D9D9）の縦線、1px、セル高の60%</li>
+  <li>緑背景時の区切り線：白 30%透明</li>
+  <li>枠が必要な場合はr-boxで囲む</li>
+</ul>
+
+<h3>箇条書きの点</h3>
+<ul>
+  <li>形状：正円</li>
+  <li>サイズ：短辺の1.5%</li>
+  <li>色：noshグリーン（白背景時）/ 白（緑背景時）</li>
+  <li>位置：1行目の行高さ中央</li>
+</ul>
+
+<h3>行間（line-height）</h3>
+<table>
+  <tr><th>要素</th><th>line-height</th></tr>
+  <tr><td>タイトル</td><td>1.4</td></tr>
+  <tr><td>本文・説明文</td><td>1.6</td></tr>
+  <tr><td>箇条書き</td><td>1.6</td></tr>
+</table>
+
+<!-- 6. サイズ体系 -->
+<div class="page-break"></div>
+<h2>6. サイズ体系</h2>
+<table>
+  <tr><th>タイプ</th><th>説明</th><th>例</th></tr>
+  <tr><td>規定サイズ</td><td>A判・B判の規格サイズ</td><td>A4（210×297mm）、A3（297×420mm）</td></tr>
+  <tr><td>指定サイズ</td><td>設置場所に合わせた任意サイズ</td><td>780×700mm、190×166mm</td></tr>
+  <tr><td>カッティング</td><td>コンテンツに合わせてサイズ決定</td><td>デザイン＋余白20mm</td></tr>
+</table>
+
+<!-- 7. 素材・仕上げ -->
+<h2>7. 素材・仕上げ</h2>
+<table>
+  <tr><th>項目</th><th>仕様</th></tr>
+  <tr><td>基材</td><td>アルミ複合板</td></tr>
+  <tr><td>印刷</td><td>インクジェットシート巻き込み</td></tr>
+  <tr><td>ラミネート</td><td>マットラミネート</td></tr>
+  <tr><td>取付方法</td><td>両面テープ＋コーキング / 直貼り / 金物固定</td></tr>
+</table>
+<p class="note">※ 設置場所・対象物に応じて最適な仕様を選定します。</p>
+
+<!-- 8. 制作フロー -->
+<h2>8. 制作フロー</h2>
+<ol>
+  <li>ヒアリング：設置場所・表示内容・枚数などを共有いただく
+    <ol><li>必要に応じてデータフォルダもご共有いただく</li></ol>
+  </li>
+  <li>ラフデザイン提出：本ルールに基づきデザイン案を作成し、PDFで提出</li>
+  <li>確認・修正：内容の確認、修正対応</li>
+  <li>最終データ作成：Illustratorで入稿データ作成</li>
+  <li>製作・施工・納品</li>
+</ol>
+
+<!-- 承認欄 -->
+<div class="page-break"></div>
+<h2>承認欄</h2>
+<table class="approval">
+  <tr><td>作成者</td><td>ファブラス株式会社 小林太一</td></tr>
+  <tr><td>作成日</td><td>2026年3月18日</td></tr>
+  <tr><td>承認者</td><td style="height:32pt;"></td></tr>
+  <tr><td>承認日</td><td style="height:32pt;"></td></tr>
+</table>
+
+</body>
+</html>
