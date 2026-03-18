@@ -329,7 +329,13 @@ function render() {
   document.getElementById('pf').srcdoc = buildFull();
 }
 
-function copyHTML() { navigator.clipboard.writeText(buildHTML()).then(() => alert('HTMLコピー完了')); }
+function copyHTML() {
+  fetch('sign.css').then(r=>r.text()).then(css=>{
+    const html = buildHTML();
+    const full = `<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><style>${css}</style></head><body style="background:#e0e0e0;display:flex;justify-content:center;padding:30px;margin:0;">${html}</body></html>`;
+    navigator.clipboard.writeText(full).then(() => alert('HTMLコピー完了（CSS埋め込み済み）'));
+  });
+}
 function savePDF() {
   const cssUrl = new URL('sign.css', location.href).href;
   const html = buildFull().replace('href="sign.css"', `href="${cssUrl}"`);
