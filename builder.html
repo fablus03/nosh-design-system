@@ -125,8 +125,8 @@ if(sessionStorage.getItem('nosh_auth')==='1') document.getElementById('lockScree
     </div>
 
     <div class="actions">
-      <button class="btn btn-primary" onclick="copyHTML()">HTMLコピー</button>
-      <button class="btn btn-outline" onclick="openPreview()">別窓で開く</button>
+      <button class="btn btn-primary" onclick="savePDF()">PDF保存</button>
+      <button class="btn btn-outline" onclick="copyHTML()">HTMLコピー</button>
     </div>
   </div>
   <div class="preview"><iframe id="pf"></iframe></div>
@@ -330,12 +330,13 @@ function render() {
 }
 
 function copyHTML() { navigator.clipboard.writeText(buildHTML()).then(() => alert('HTMLコピー完了')); }
-function openPreview() {
+function savePDF() {
   const cssUrl = new URL('sign.css', location.href).href;
   const html = buildFull().replace('href="sign.css"', `href="${cssUrl}"`);
   const w = window.open('','_blank');
   w.document.write(html);
   w.document.close();
+  w.onload = () => { w.print(); };
 }
 function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
